@@ -10,6 +10,8 @@ import Features
 Engine = pyttsx3.init()
 Voices = Engine.getProperty("voices")
 Engine.setProperty("voice", Voices[1].id)
+Engine.setProperty('rate',170)
+
 
 # Speak Function For Command
 
@@ -29,9 +31,9 @@ def Listen():
     try:
         Query = r.recognize_google(audio)
         # print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
-    except sr.UnknownValueError:
-        print("Google Speech Recognition could not understand audio")
-    return Query.lower()
+        return Query.lower()
+    except:
+        return ""
 # Speak("Hello World");
 # Listen();
 
@@ -45,5 +47,9 @@ def Tasks():
     elif "google search" in Results:
         Tokenize = Results.replace("google search", "")
         Features.GoogleSearch(Tokenize)
+    elif "download this video" in Results:
+        Features.DownloadVideo();
+    else:
+        Speak("Google Speech Recognition Could Not Understand Audio or May Be Network Issue")
 
 Tasks()
