@@ -7,6 +7,8 @@ from pytube import YouTube ## For Downloading Videos from Youtube
 from time import sleep ## For Sleep Program
 import pyperclip ## For Copy Paste
 import os ## For OS System Calls
+import speedtest ## For Checking Internet Speed
+import math
 # =============================================
 
 ## Changing Assistant Sound to Female
@@ -53,3 +55,31 @@ def DownloadVideo():
     Download(Link);
 
 # DownloadVideo();
+
+def SpeedTest():
+    try:
+        Speak("Please Hold On, Checking Internet Speed")
+        Speed = speedtest.Speedtest()
+
+        DownloadSpeed =  Speed.download()/1024/1024
+        String ="Your Download Speed Is : "+"{:.2f}".format(DownloadSpeed)+ "MB";
+        print(String)
+        Speak(String);
+
+        UploadSpeed = Speed.upload()/1024/1024
+        String ="Your Upload Speed Is   : "+"{:.2f}".format(UploadSpeed)+ "MB";
+        print(String)
+        Speak(String);
+    except:
+        Speak("Time Out, Please Try Again");
+# SpeedTest()
+
+def Calculator(Exp):
+    print(Exp)
+    try:
+        Ans=eval(Exp)
+        print(f"Answer of Expression '{Exp}' is = {Ans}")
+        Speak(f"Answer of {Exp} is {Ans}")
+    except:
+        Speak("Expression Error, Your Expression is Faulty")
+# Calculator("3 * 2")

@@ -30,7 +30,7 @@ def Listen():
         audio = r.listen(source)
     try:
         Query = r.recognize_google(audio)
-        # print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
+        print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
         return Query.lower()
     except:
         return ""
@@ -49,6 +49,13 @@ def Tasks():
         Features.GoogleSearch(Tokenize)
     elif "download this video" in Results:
         Features.DownloadVideo();
+    elif "test internet speed" in Results:
+        Features.SpeedTest();
+    elif "calculate" in Results:
+        Tokenize = Results.replace("calculate", "")
+        Tokenize=Tokenize.replace("divided by","/")
+        Tokenize=Tokenize.replace("x","*")
+        Features.Calculator(Tokenize)
     else:
         Speak("Google Speech Recognition Could Not Understand Audio or May Be Network Issue")
 
