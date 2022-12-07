@@ -30,7 +30,7 @@ def Listen():
         audio = r.listen(source)
     try:
         Query = r.recognize_google(audio)
-        print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
+        # print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
         return Query.lower()
     except:
         return ""
@@ -56,6 +56,14 @@ def Tasks():
         Tokenize=Tokenize.replace("divided by","/")
         Tokenize=Tokenize.replace("x","*")
         Features.Calculator(Tokenize)
+    elif "whatsapp message" in Results:
+        Speak("Tell The Recipient Name");
+        Name=Listen();
+        print(f"User Name Is : {Name}")
+        Speak("Record Your Message")
+        Message=Listen();
+        print(f"Message Is : {Message}")
+        Features.WhatsappMessage(Name,Message)
     else:
         Speak("Google Speech Recognition Could Not Understand Audio or May Be Network Issue")
 

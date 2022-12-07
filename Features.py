@@ -9,6 +9,10 @@ import pyperclip ## For Copy Paste
 import os ## For OS System Calls
 import speedtest ## For Checking Internet Speed
 import math
+import webbrowser
+import pyautogui
+from time import sleep
+import keyboard
 # =============================================
 
 ## Changing Assistant Sound to Female
@@ -83,3 +87,22 @@ def Calculator(Exp):
     except:
         Speak("Expression Error, Your Expression is Faulty")
 # Calculator("3 * 2")
+
+def WhatsappMessage(Name,Message):
+    try :
+        webbrowser.open("https://web.whatsapp.com/")
+        sleep(20)
+        pyautogui.click(x=289, y=185);
+        sleep(3)
+        keyboard.write(Name)
+        sleep(3)
+        pyautogui.click(x=205, y=288)
+        sleep(2)
+        pyautogui.click(x=1035, y=705)
+        sleep(2)
+        keyboard.write(Message)
+        keyboard.press("enter")
+        Speak(f"Message Sent Successfully to {Name}")
+    except:
+        Speak("Unable to Send Message ")
+# WhatsappMessage("Papa Jan","Hello World !!");
