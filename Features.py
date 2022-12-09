@@ -13,6 +13,7 @@ import webbrowser
 import pyautogui
 from time import sleep
 import keyboard
+import AppOpener
 # =============================================
 
 ## Changing Assistant Sound to Female
@@ -79,7 +80,6 @@ def SpeedTest():
 # SpeedTest()
 
 def Calculator(Exp):
-    print(Exp)
     try:
         Ans=eval(Exp)
         print(f"Answer of Expression '{Exp}' is = {Ans}")
@@ -106,3 +106,12 @@ def WhatsappMessage(Name,Message):
     except:
         Speak("Unable to Send Message ")
 # WhatsappMessage("Papa Jan","Hello World !!");
+
+def RunProgramme(App):
+    try:
+        AppOpener.run(App)
+        Speak(f"Opening {App}")
+    except:
+        Speak("OOPS Programme Not Found")
+
+# RunProgramme("weather")

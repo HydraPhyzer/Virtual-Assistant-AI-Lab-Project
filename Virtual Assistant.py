@@ -1,9 +1,9 @@
 # Import Packages
 import pyttsx3
 import speech_recognition as sr
+import subprocess
 # from Features import YoutubeSearch
 import Features
-
 # =============================================
 
 # Changing Assistant Sound to Female
@@ -64,7 +64,13 @@ def Tasks():
         Message=Listen();
         print(f"Message Is : {Message}")
         Features.WhatsappMessage(Name,Message)
+    elif "open" in Results:
+        Tokenize=Results.replace("open","");
+        Features.RunProgramme(Tokenize)
+    elif "" in Results:
+        return ""
     else:
         Speak("Google Speech Recognition Could Not Understand Audio or May Be Network Issue")
 
-Tasks()
+while 1:
+        Tasks()
