@@ -8,12 +8,14 @@ from time import sleep ## For Sleep Program
 import pyperclip ## For Copy Paste
 import os ## For OS System Calls
 import speedtest ## For Checking Internet Speed
-import math
 import webbrowser
 import pyautogui
 from time import sleep
 import keyboard
 import AppOpener
+import keyboard
+import re as Regex
+
 # =============================================
 
 ## Changing Assistant Sound to Female
@@ -110,8 +112,85 @@ def WhatsappMessage(Name,Message):
 def RunProgramme(App):
     try:
         AppOpener.run(App)
-        Speak(f"Opening {App}")
     except:
-        Speak("OOPS Programme Not Found")
+        Speak("OOPS Error Occured While Opening Programme")
 
 # RunProgramme("weather")
+
+def ShowWindow(Arg):
+    try:
+        keyboard.press_and_release(f'windows + {int(Arg)}')
+    except:
+        Speak("Currently Unable to Open Window")
+
+# ShowWindow(2)
+
+def CloseWindow():
+    try:
+        keyboard.press_and_release('alt+f4')
+    except:
+        Speak("Currently Unable to Close Window")
+
+# CloseWindow()
+
+def MinimizeWindow():
+    try:
+        keyboard.press_and_release(f'windows+m')
+    except:
+        Speak("Currently Unable to Minimize Window")
+# MinimizeWindow()
+
+def MaximizeWindow():
+    try:
+        keyboard.press_and_release(f'windows+{keyboard.KEY_UP}')
+    except:
+        Speak("Currently Unable to Maximize Window")
+# MaximizeWindow()
+
+def MuteAudio():
+    try:
+        pyautogui.press('volumemute')
+    except:
+        Speak("Currently Unable to Mute Audio")
+
+# MuteAudio()
+
+def IncreaseAudio(Text):
+    try:         
+        NumArray = Regex.findall(r'\d+', Text) 
+        Ind=0;
+        Speak("Increasing Volume")
+        while Ind<int(NumArray[0]):
+            pyautogui.press('volumeup')
+            Ind+=1;
+    except:
+        Speak("Currently Unable to Mute Audio")
+
+# IncreaseAudio()
+
+def DecreaseAudio(Text):
+    try:         
+        NumArray = Regex.findall(r'\d+', Text) 
+        Ind=0;
+        Speak("Decreasing Volume")
+        while Ind<int(NumArray[0]):
+            pyautogui.press('volumedown')
+            Ind+=1;
+    except:
+        Speak("Currently Unable to Mute Audio")
+
+# DecreaseAudio()
+
+def TurnOnWiFi():
+    import ctypes
+    commands = u'/k netsh interface set interface "Wi-Fi" enabled && exit'
+    ctypes.windll.shell32.ShellExecuteW(None,u"runas",u"cmd.exe",commands,None,1)
+    
+# TurnOnWiFi()
+
+def TurnOffWiFi():
+    import ctypes
+    commands = u'/k netsh interface set interface "Wi-Fi" disabled && exit'
+    ctypes.windll.shell32.ShellExecuteW(None,u"runas",u"cmd.exe",commands,None,1)
+    
+# TurnOffWiFi()
