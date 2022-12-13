@@ -194,3 +194,26 @@ def TurnOffWiFi():
     ctypes.windll.shell32.ShellExecuteW(None,u"runas",u"cmd.exe",commands,None,1)
     
 # TurnOffWiFi()
+
+def TellJoke():
+    try:
+        URL="https://icanhazdadjoke.com/";
+        import requests
+        Req=requests.get(URL,headers={"Accept":"application/json"}).json()
+
+        print(Req['joke'])
+        Speak(Req['joke'])
+    except:
+        Speak("Can't Tell You a Joke Right Now, May be a Network Issue")
+# TellJoke()
+
+def Respond():
+    Speak(f"Hey, {os.getlogin()}, Is There Anything That I can Do For You")
+
+# Respond()
+
+def Google(Query):
+    Res="https://www.google.com/search?q="+Query
+    webbrowser.open(Res)
+
+# Google()

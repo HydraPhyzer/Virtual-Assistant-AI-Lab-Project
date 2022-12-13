@@ -44,6 +44,7 @@ def Tasks():
     Results = Listen()
     print(Results)
 
+
     if "youtube search" in Results:
         Tokenize = Results.replace("youtube search", "")
         Features.YoutubeSearch(Tokenize)
@@ -70,7 +71,8 @@ def Tasks():
     elif "open" in Results:
         Tokenize=Results.replace("open","");
         Features.RunProgramme(Tokenize)
-    
+    elif "lisa" in Results and ("hello" in Results or "hey" in Results):
+        Features.Respond()
     # ==============Window Context=================
 
     elif "show" in Results and "window" in Results:
@@ -98,11 +100,17 @@ def Tasks():
     elif "off" in Results and ("wifi" in Results or "wi-fi" in Results):
         Features.TurnOffWiFi()
 
-        
-    elif "" in Results:
+    # ==============Jokes API=================
+    elif "joke" in Results :
+        Features.TellJoke()
+    
+    elif len(Results)==0:
         return ""
     else:
-        Speak("Google Speech Recognition Could Not Understand Audio or May Be Network Issue")
+        try:
+            Features.Google(Results)
+        except: 
+            Speak("Google Speech Recognition Could Not Understand Audio or May Be Network Issue")
 
 while 1:
         Tasks()
