@@ -15,6 +15,7 @@ import keyboard
 import AppOpener
 import keyboard
 import re as Regex
+import requests
 
 # =============================================
 
@@ -198,7 +199,6 @@ def TurnOffWiFi():
 def TellJoke():
     try:
         URL="https://icanhazdadjoke.com/";
-        import requests
         Req=requests.get(URL,headers={"Accept":"application/json"}).json()
 
         print(Req['joke'])
@@ -268,3 +268,19 @@ def WriteNote(Message):
         Speak("Unable to Add Note For You")
 
 # WriteNote("Hello World")
+
+def Weather():
+    import json
+    from urllib.request import urlopen
+    Entry=json.load(urlopen("http://ipinfo.io/json"))
+
+    Query=Entry['city']
+    Data=requests.get(f'https://api.weatherapi.com/v1/forecast.json?key=e3e5a6e2101943eb83550323222106&q=${Query}&aqi=no').json()
+
+    Statement=f"Currently It's {Data['current']['temp_c']} Degree Centigrade, With {Data['current']['condition']['text']} Condition In {Data['location']['name']} With Wind Speed Of {Data['current']['wind_kph']} Kilometers Per Hour";
+
+    print(f"--> Temp : {Data['current']['temp_c']} Degree Centigrade")
+    Speak(Statement)
+    return ""
+
+# Weather()

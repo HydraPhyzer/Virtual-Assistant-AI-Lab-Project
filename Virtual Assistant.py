@@ -111,7 +111,9 @@ def Tasks():
         Speak("Record Your Note, Go Ahead");
         Note = Listen("Recording")
         Features.WriteNote(Note)
-
+    elif "weather" in Results :
+        Features.Weather()
+        
     elif len(Results)==0:
         return ""
     else:
