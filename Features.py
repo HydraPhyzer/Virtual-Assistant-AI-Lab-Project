@@ -217,3 +217,17 @@ def Google(Query):
     webbrowser.open(Res)
 
 # Google()
+
+def ScreenShot():
+    from PIL import Image
+    from datetime import datetime
+
+    myScreenshot = pyautogui.screenshot()
+    Time = datetime.now().strftime("%Y-%m-%d-%H%M%S")
+    Path=r'C:\Users\Zubair Gujjar\Pictures\Saved Pictures\{}.jpg'.format(Time)
+    myScreenshot.save(Path)
+
+    Speak("Captured Screenshot and Have Been Saved to Pictures Folder")
+    Image.open(Path).show()
+
+# ScreenShot()

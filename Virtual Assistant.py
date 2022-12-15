@@ -103,7 +103,10 @@ def Tasks():
     # ==============Jokes API=================
     elif "joke" in Results :
         Features.TellJoke()
-    
+    # ===========Functionalities==============
+    elif "screenshot" in Results or "snapshot" in Results or "screen shot" in Results or "snap shot" in Results :
+        Features.ScreenShot()
+
     elif len(Results)==0:
         return ""
     else:
