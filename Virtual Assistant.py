@@ -21,11 +21,11 @@ def Speak(Command):
     Engine.runAndWait()
 
 
-def Listen():
+def Listen(Message):
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("=============================")
-        print("Say Something! (Listening) 🔊")
+        print(f"Say Something! ({Message}) 🔊")
         print("=============================")
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source)
@@ -41,8 +41,7 @@ def Listen():
 
 
 def Tasks():
-    Results = Listen()
-    print(Results)
+    Results = Listen("Listening")
 
 
     if "youtube search" in Results:
@@ -62,11 +61,11 @@ def Tasks():
         Features.Calculator(Tokenize)
     elif "whatsapp message" in Results:
         Speak("Tell The Recipient Name");
-        Name=Listen();
-        print(f"User Name Is : {Name}")
+        Name=Listen("Recording");
+        print(f"--> User Name Is : {Name}")
         Speak("Record Your Message")
         Message=Listen();
-        print(f"Message Is : {Message}")
+        print(f"--> Message Is : {Message}")
         Features.WhatsappMessage(Name,Message)
     elif "open" in Results:
         Tokenize=Results.replace("open","");
@@ -106,6 +105,12 @@ def Tasks():
     # ===========Functionalities==============
     elif "screenshot" in Results or "snapshot" in Results or "screen shot" in Results or "snap shot" in Results :
         Features.ScreenShot()
+    elif "time" in Results :
+        Features.CurrentTime()
+    elif "note" in Results:
+        Speak("Record Your Note, Go Ahead");
+        Note = Listen("Recording")
+        Features.WriteNote(Note)
 
     elif len(Results)==0:
         return ""

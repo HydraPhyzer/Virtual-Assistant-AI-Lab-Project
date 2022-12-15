@@ -52,7 +52,7 @@ def DownloadVideo():
         try:
             URL=YouTube(Link);
             Speak("Initiating The Download");
-            print("Initiating The Download : ",Link)
+            print("--> Initiating The Download : ",Link)
             Video=URL.streams.filter(res="720p").first();
             Video.download('C:\\Users\\Zubair Gujjar\\Downloads\\Video')
             Speak("Video Has Been Downloaded and Saved to Video Folder in Downlods Folder");
@@ -70,12 +70,12 @@ def SpeedTest():
 
         DownloadSpeed =  Speed.download()/1024/1024
         String ="Your Download Speed Is : "+"{:.2f}".format(DownloadSpeed)+ "MB";
-        print(String)
+        print(f"--> {String}")
         Speak(String);
 
         UploadSpeed = Speed.upload()/1024/1024
         String ="Your Upload Speed Is   : "+"{:.2f}".format(UploadSpeed)+ "MB";
-        print(String)
+        print(f"--> {String}")
         Speak(String);
     except:
         Speak("Time Out, Please Try Again");
@@ -84,7 +84,7 @@ def SpeedTest():
 def Calculator(Exp):
     try:
         Ans=eval(Exp)
-        print(f"Answer of Expression '{Exp}' is = {Ans}")
+        print(f"--> Answer of Expression '{Exp}' is = {Ans}")
         Speak(f"Answer of {Exp} is {Ans}")
     except:
         Speak("Expression Error, Your Expression is Faulty")
@@ -231,3 +231,40 @@ def ScreenShot():
     Image.open(Path).show()
 
 # ScreenShot()
+
+def CurrentTime():
+    from datetime import datetime 
+    import pytz
+
+    Zone = pytz.timezone("Asia/Karachi") 
+    Time = datetime.now(Zone)
+    Current = Time.strftime("%I:%M:%S %p")
+    print(f"--> The Current Time Is : {Current}")
+    Speak(Current)
+
+# CurrentTime()
+
+def WriteNote(Message):
+    try:
+        from datetime import datetime 
+        import pytz
+
+        Zone = pytz.timezone("Asia/Karachi") 
+        Time = datetime.now(Zone)
+        Current = Time.strftime("%I-%M-%S %p")
+
+        FileName=str(Time).replace(":","-") + "-Note.txt"
+
+        with open(FileName,"w") as File:
+            File.write(Message)
+        
+        Path1=r'D:\Semester #5\(AI) Artificial Intelligence Lab\AI Lab Project\Virtual Assistant\{}'.format(FileName)
+        Path2=r'C:\Users\Zubair Gujjar\Documents\{}'.format(FileName)
+
+        import shutil
+        shutil.move(Path1,Path2)
+        Speak("Note Successfully Added and Have Been Saved to Documents Folder")
+    except:
+        Speak("Unable to Add Note For You")
+
+# WriteNote("Hello World")
