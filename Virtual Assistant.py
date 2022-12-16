@@ -20,7 +20,6 @@ def Speak(Command):
     Engine.say(Command)
     Engine.runAndWait()
 
-
 def Listen(Message):
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -123,4 +122,4 @@ def Tasks():
             Speak("Google Speech Recognition Could Not Understand Audio or May Be Network Issue")
 
 while 1:
-        Tasks()
+    Tasks()

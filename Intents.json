@@ -1,0 +1,64 @@
+{
+    "intents":[
+        {
+            "tag":"greeting",
+            "patterns":["hello","hii","hi","hey","what is up","what's up","Lisa"],
+            "responses":["Hello Sir","How May I Help You","Is There Anything, That I Can Do For You ?","Hey","I Hope Your Day Goes Great. I'm Always Here, If You Need Me","Hey, How Are You ?"]
+        },
+        {
+            "tag":"bye",
+            "patterns":["by","bye","good bye","see you later","goodbye"],
+            "responses":["Okay, Will Meet You Soon","Until We Meet Again","Good Bye","Bye ","Have A Good Day","Will Meet You Soon"]
+        },
+        {
+            "tag":"health",
+            "patterns":["how are you","are you fine","are you good","how you","are you okay"],
+            "responses":["Fine","I'm Perfect","I am Good","I am Great as Always as You","I'm Superb Like You","I am Enjoying My Health"]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["thank you", "thanks", "thank you very much", "i appreciate it"],
+            "responses": ["You're Welcome!", "No Problem, Happy to Help.", "Anytime, Happy to Assist."]
+        },
+        {
+            "tag": "name",
+            "patterns": ["what is your name", "how should I address you", "what do I call you","your name","can i know your name","what's your name","who are you"],
+            "responses": ["My name is Lisa. How may I Assist You Today?", "You Can Call me Lisa. How can I Help You?", "I am Lisa, a virtual assistant Trained By Zubair and Qasim With Bundle of Lines of Code. How can I Assist You?"]
+        },
+        {
+            "tag": "youtubesearch",
+            "patterns": ["youtube search","search on youtube","youtube","search something on youtube","you tube"],
+            "responses": ["youtubesearch"]
+        },
+        {
+            "tag": "googlesearch",
+            "patterns": ["google search","search on google","google","search something on google"],
+            "responses": ["googlesearch"]
+        },
+        {
+            "tag": "download",
+            "patterns": ["download","download video","can you please download video","download youtube video"],
+            "responses": ["download"]
+        },
+        {
+            "tag": "testinternetspeed",
+            "patterns": ["speed check","check internet speed","test speed","test internet speed","check download speed","check upload speed","check network speed","network speed","internet speed"],
+            "responses": ["testinternetspeed"]
+        },
+        {
+            "tag": "whatsappmessage",
+            "patterns": ["whatsapp","whatsapp message","send message","send whatsapp message","message to someone","send whatsapp message to","send text message","text message"],
+            "responses": ["whatsappmessage"]
+        },
+        {
+            "tag": "open",
+            "patterns": ["open"],
+            "responses": ["open"]
+        },
+        {
+            "tag": "respond",
+            "patterns": ["lisa","leeza","lisaa","leesa","liza","hey lisa","hey liza","hey leesa"],
+            "responses": ["Yes","I am Listening","Wanna Say Something , Go Ahead","Yup","I am Available to Answer Your Queries"]
+        }
+    ]
+}
