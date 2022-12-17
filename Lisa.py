@@ -29,6 +29,7 @@ from Speak import Speak
 def Main():
     Sentence=Listen("Listening")
     Original=Sentence
+    print(Sentence)
     Sentence=Tokenize(Sentence)
     X=BagOfWords(Sentence,AllWords)
     X=X.reshape(1,X.shape[0])
@@ -69,8 +70,56 @@ def Main():
                     Features.RunProgramme(Tokenized)
                 elif Reply=="respond":
                     Speak(Reply)
-                    
+                elif Reply=="calculate":
+                    Tokenized = Original.replace("calculate", "")
+                    Tokenized=Tokenized.replace("divided by","/")
+                    Tokenized=Tokenized.replace("divide","/")
+                    Tokenized=Tokenized.replace("x","*")
+
+                    NewExp = "".join(i for i in Tokenized if i in "0123456789+*/-()")
+
+                    Features.Calculator(NewExp)
+                elif Reply=="show" :
+                # Tokenize=Results.replace("show window","");
+                    Tokenized=Original.split();
+                    Features.ShowWindow(Tokenized[-1])
+                elif Reply=="close":
+                    Features.CloseWindow()
+                elif Reply=="minimize":
+                    Features.MinimizeWindow()
+                elif Reply=="maximize":
+                    Features.MaximizeWindow()
+
+                # ==============Volume Control=================
+                elif Reply=="mute" :
+                    Features.MuteAudio()
+                elif Reply=="increase":
+                    Features.IncreaseAudio(Original)
+                elif Reply=="decrease":
+                    Features.DecreaseAudio(Original)
+                # ==============Wi-Fi Control=================
+                elif Reply=="onwifi":
+                    Features.TurnOnWiFi()
+                elif Reply=="offwifi":
+                    Features.TurnOffWiFi()
+                # ==============Jokes API=================
+                elif Reply=="joke"  :
+                    Features.TellJoke()
+                # ===========Functionalities==============
+                elif Reply=="screenshot":
+                    Features.ScreenShot()
+                elif Reply=="time" :
+                    Features.CurrentTime()
+                elif Reply=="note":
+                    Speak("Record Your Note, Go Ahead");
+                    Note = Listen("Recording")
+                    Features.WriteNote(Note)
+                elif Reply=="weather":
+                    Features.Weather()
                 else:
                     Speak(Reply)
+    else:
+        Speak("Pardon, Currently, I Don't Know The Answer to This Question. I May occasionally generate incorrect information, Because, I Have Limited Knowledge of World. I am Under Trainig")
+
 while True:
     Main()

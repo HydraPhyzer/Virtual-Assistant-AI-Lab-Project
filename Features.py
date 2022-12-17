@@ -157,28 +157,34 @@ def MuteAudio():
 # MuteAudio()
 
 def IncreaseAudio(Text):
+    Speak("Increasing Volume")
     try:         
-        NumArray = Regex.findall(r'\d+', Text) 
+        NumArray = Regex.findall(r'\d+', Text)
+
         Ind=0;
-        Speak("Increasing Volume")
         while Ind<int(NumArray[0]):
             pyautogui.press('volumeup')
             Ind+=1;
     except:
-        Speak("Currently Unable to Mute Audio")
+        while Ind<5:
+            pyautogui.press('volumeup')
+            Ind+=1
 
 # IncreaseAudio()
 
 def DecreaseAudio(Text):
+    Speak("Decreasing Volume")
     try:         
         NumArray = Regex.findall(r'\d+', Text) 
         Ind=0;
-        Speak("Decreasing Volume")
         while Ind<int(NumArray[0]):
             pyautogui.press('volumedown')
             Ind+=1;
     except:
-        Speak("Currently Unable to Mute Audio")
+        Ind=0;
+        while Ind<5:
+            pyautogui.press('volumedown')
+            Ind+=1;
 
 # DecreaseAudio()
 

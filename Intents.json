@@ -2,7 +2,7 @@
     "intents":[
         {
             "tag":"greeting",
-            "patterns":["hello","hii","hi","hey","what is up","what's up","Lisa"],
+            "patterns":["hello","hii","hi","hey","what is up","what's up","lisa"],
             "responses":["Hello Sir","How May I Help You","Is There Anything, That I Can Do For You ?","Hey","I Hope Your Day Goes Great. I'm Always Here, If You Need Me","Hey, How Are You ?"]
         },
         {
@@ -57,8 +57,83 @@
         },
         {
             "tag": "respond",
-            "patterns": ["lisa","leeza","lisaa","leesa","liza","hey lisa","hey liza","hey leesa"],
+            "patterns": ["lisa","leeza","lisaa","leesa","liza","hey lisa","hey liza","hey leesa","hello lisa","hello leesa","hello liza"],
             "responses": ["Yes","I am Listening","Wanna Say Something , Go Ahead","Yup","I am Available to Answer Your Queries"]
+        },
+        {
+            "tag": "calculate",
+            "patterns": ["calculate","perform calculation","addition","multiplication","division","subtraction","calculation","add","sum","subtract","multiply","plus","multiplied by","divided by","minus","what is the answer of"],
+            "responses": ["calculate"]
+        },
+        {
+            "tag": "show",
+            "patterns": ["show window","show","window","open window","show windows","view window"],
+            "responses": ["show"]
+        },
+        {
+            "tag": "close",
+            "patterns": ["close window","close","close window","close windows","close window"],
+            "responses": ["close"]
+        },
+        {
+            "tag": "minimize",
+            "patterns": ["minimize window","minimize","minimise","minimise window","minimize window","minimise windows","minimized window"],
+            "responses": ["minimize"]
+        },
+        {
+            "tag": "maximize",
+            "patterns": ["maximize window","maximize","maximise","maximise window","maximize window","maximise windows","maximized window"],
+            "responses": ["maximize"]
+        },
+        {
+            "tag": "mute",
+            "patterns": ["mute","mute volume","no volume","no sound","mute sound","mute speakers","mute speaker"],
+            "responses": ["mute"]
+        },
+        {
+            "tag": "decrease",
+            "patterns": ["decrease","decrease volume","minimise volume","minimize volume","decrease sound","lower volume","lower sound","lower speaker sound","lower speaker volume"],
+            "responses": ["decrease"]
+        },
+        {
+            "tag": "increase",
+            "patterns": ["increase","increase volume","maximize volume","maximise volume","increase sound","increase volume","maximise sound","maximize speaker sound","maximise speaker volume"],
+            "responses": ["increase"]
+        },
+        {
+            "tag": "onwifi",
+            "patterns": ["on wifi","turn on wifi","turn wifi on","wifi on", "on wi-fi","turn wi-fi on","turn on wi-fi ","wifi on"],
+            "responses": ["onwifi"]
+        },
+        {
+            "tag": "offwifi",
+            "patterns": ["off wifi","turn off wifi","turn wifi off","wifi off", "off wi-fi","turn wi-fi off","turn off wi-fi ","wifi off","of wifi","turn of wifi","turn wifi of","wifi of", "of wi-fi","turn wi-fi of","turn of wi-fi ","wifi of"],
+            "responses": ["offwifi"]
+        },
+        {
+            "tag": "joke",
+            "patterns": ["joke","tell me a joke","tell me joke","tell joke","make me laugh","make my happy","tell me something funny","tell me funny thing","tell me a funny joke"],
+            "responses": ["joke"]
+        },
+        {
+            "tag": "screenshot",
+            "patterns": ["screenshot","capture screenshot","capture screen","screen shot","snapshot","capture snapshot","capture snap","snap shot"],
+            "responses": ["screenshot"]
+        },
+        {
+            "tag": "time",
+            "patterns": ["time","current time","what is the time","what is the current time","what;s the time","what time it is","what time is it","tell the time"],
+            "responses": ["time"]
+        },
+        {
+            "tag": "note",
+            "patterns": ["note","add a note","keep note","add note for me","save note","write notes","add notes"],
+            "responses": ["note"]
+        },
+        {
+            "tag": "weather",
+            "patterns": ["weather","what's the weather condition","how the weather looks like","what's the temperature","temperature","wind speed"],
+            "responses": ["weather"]
         }
     ]
 }
