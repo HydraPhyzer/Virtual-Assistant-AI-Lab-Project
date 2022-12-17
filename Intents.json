@@ -134,6 +134,11 @@
             "tag": "weather",
             "patterns": ["weather","what's the weather condition","how the weather looks like","what's the temperature","temperature","wind speed"],
             "responses": ["weather"]
+        },
+        {
+            "tag": "question",
+            "patterns": ["qa session","qa","question answer session","question answer","answer my question","can i ask you a question","i have a question"],
+            "responses": ["question"]
         }
     ]
 }

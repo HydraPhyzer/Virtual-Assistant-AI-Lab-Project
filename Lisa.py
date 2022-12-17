@@ -42,7 +42,7 @@ def Main():
     Probs=torch.softmax(Output,dim=1)
     Prob=Probs[0][Predicted.item()]
 
-    if Prob.item()>0.75:
+    if Prob.item()>0.93:
         for Intent in Intents['intents']:
             if Tag==Intent['tag']:
                 Reply=random.choice(Intent['responses'])
@@ -116,6 +116,11 @@ def Main():
                     Features.WriteNote(Note)
                 elif Reply=="weather":
                     Features.Weather()
+                elif Reply=="question":
+                    Speak("What Is Your Question ? ")
+                    Que=Listen("Question");
+                    print(f"--> Question : {Que.capitalize()}")
+                    Features.QuestionAnswer(Que)
                 else:
                     Speak(Reply)
     else:

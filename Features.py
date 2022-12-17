@@ -16,6 +16,7 @@ import AppOpener
 import keyboard
 import re as Regex
 import requests
+import openai
 
 # =============================================
 
@@ -290,3 +291,11 @@ def Weather():
     return ""
 
 # Weather()
+
+def QuestionAnswer(Question):
+    openai.api_key = "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"
+    response = openai.Completion.create(engine="text-davinci-003",prompt=Question)
+    print(f"--> Answer : {response.choices[0].text.strip()}")
+    Speak(response.choices[0].text.strip())
+
+# QuestionAnswer("Who Creaed God ?")
