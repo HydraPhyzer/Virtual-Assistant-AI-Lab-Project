@@ -38,6 +38,8 @@ for (PaternSentence,Tag) in Combinations:
     Label=Tags.index(Tag)
     YTrain.append(Label)
 
+[[0,1,2,3],[3.4,5,6]]
+
 XTrain=Numpy.array(XTrain)
 YTrain=Numpy.array(YTrain)
 

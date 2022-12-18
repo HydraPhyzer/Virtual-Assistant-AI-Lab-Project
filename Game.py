@@ -4,6 +4,8 @@ from colorama import Fore
 def ListenMove():
     r = sr.Recognizer()
     with sr.Microphone() as source:
+        r.pause_threshold = 1
+        r.adjust_for_ambient_noise(source)
         Audio = r.listen(source)
     try:
         Move = r.recognize_google(Audio).lower()

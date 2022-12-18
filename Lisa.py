@@ -37,13 +37,12 @@ def Main():
 
     Output=Model(X)
 
-
     _,Predicted=torch.max(Output,dim=1)
 
     Tag=Tags[Predicted.item()]
     Probs=torch.softmax(Output,dim=1)
     Prob=Probs[0][Predicted.item()]
-
+    
     print(Prob.item())
     if Prob.item()>0.75:
         for Intent in Intents['intents']:
