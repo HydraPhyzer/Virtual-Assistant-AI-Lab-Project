@@ -13,6 +13,7 @@ def Stem(Word):
 
 def BagOfWords(TokenizedSentence,Words):
     SentenceWord=[Stem(Word) for Word in TokenizedSentence]
+
     Bag=Numpy.zeros(len(Words),dtype=Numpy.float32)
 
     for IDX,W in enumerate(Words):

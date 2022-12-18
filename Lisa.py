@@ -37,20 +37,23 @@ def Main():
 
     Output=Model(X)
 
+
     _,Predicted=torch.max(Output,dim=1)
+
     Tag=Tags[Predicted.item()]
     Probs=torch.softmax(Output,dim=1)
     Prob=Probs[0][Predicted.item()]
 
-    if Prob.item()>0.93:
+    print(Prob.item())
+    if Prob.item()>0.75:
         for Intent in Intents['intents']:
             if Tag==Intent['tag']:
                 Reply=random.choice(Intent['responses'])
 
-                if Reply=="youtubesearch":
+                if Reply=="youtubesearch" or "youtube search" in Original:
                     Tokenized = Original.replace("youtube search", "")
                     Features.YoutubeSearch(Tokenized)
-                elif Reply=="googlesearch":
+                elif Reply=="googlesearch" or "google search" in Original:
                     Tokenized = Original.replace("google search", "")
                     Features.GoogleSearch(Tokenized)
                 elif Reply=="download" :
@@ -121,10 +124,20 @@ def Main():
                     Que=Listen("Question");
                     print(f"--> Question : {Que.capitalize()}")
                     Features.QuestionAnswer(Que)
+                # ===========Game Tic Tac Toe============
+                elif Reply=="playgame":
+                    Speak("Okaaay , Lets Play Tic Tac Toe. This is One of My Favourite")
+                    Features.Games()
                 else:
-                    Speak(Reply)
+                    if(len(Original)>0):
+                        Speak(Reply)
     else:
-        Speak("Pardon, Currently, I Don't Know The Answer to This Question. I May occasionally generate incorrect information, Because, I Have Limited Knowledge of World. I am Under Trainig")
+        if "youtube search" in Original:
+            Tokenized = Original.replace("youtube search", "")
+            Features.YoutubeSearch(Tokenized)
+        elif "google search" in Original:
+            Tokenized = Original.replace("google search", "")
+            Features.GoogleSearch(Tokenized)
 
 while True:
     Main()

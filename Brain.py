@@ -10,7 +10,9 @@ class NeuralNetwork(NN.Module):
 
         self.Relu=NN.ReLU()
 
+
     def forward(self,X):
+
         Out=self.L1(X)
         Out=self.Relu(Out)
 
@@ -18,5 +20,5 @@ class NeuralNetwork(NN.Module):
         Out=self.Relu(Out)
 
         Out=self.L3(Out)
-
+        
         return Out

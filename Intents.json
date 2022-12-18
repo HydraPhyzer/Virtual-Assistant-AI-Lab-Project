@@ -139,6 +139,16 @@
             "tag": "question",
             "patterns": ["qa session","qa","question answer session","question answer","answer my question","can i ask you a question","i have a question"],
             "responses": ["question"]
+        },
+        {
+            "tag": "playgame",
+            "patterns": ["play game","let's play game","okay play game","play tic tac toe","tic tac toe","tictactoe","let's play tic tac toe"],
+            "responses": ["playgame"]
+        },
+        {
+            "tag": "unknown",
+            "patterns": [".*"],
+            "responses": ["Pardon, Currently, I Don't Know The Answer to This Question. I May occasionally generate incorrect information, Because, I Have Limited Knowledge of World. I am Under Trainig"]
         }
     ]
 }
