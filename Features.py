@@ -294,7 +294,7 @@ def Weather():
 # Weather()
 
 def QuestionAnswer(Question):
-    openai.api_key = "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"
+    openai.api_key = "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"
     response = openai.Completion.create(engine="text-davinci-003",prompt=Question)
     print(f"--> Answer : {response.choices[0].text.strip()}")
     Speak(response.choices[0].text.strip())
